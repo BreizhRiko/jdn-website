@@ -1,0 +1,194 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Just Diplomed Night 2022 - IG2I Centrale Lille{% endblock %}
+
+{% block body %}
+    <div class="card shadow">
+        <div class="card-header py-3 align-middle">
+            <p class="text-primary m-0 fw-bold">RÉSERVATIONS</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                 aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>NOM PRÉNOM</th>
+                        <th>TABLE</th>
+                        <th>NB MENUS</th>
+                        <th>DATE</th>
+                        <th>MODE DE PAIEMENT</th>
+                        <th>PAYÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for reservation in reservation_pagination %}
+                        <tr class="align-middle">
+                            <td>{{ reservation.firstName }} {{ reservation.lastName }}</td>
+                            <td>{{ reservation.hostTable.name }}</td>
+                            <td>{{ reservation.getMenuReservationsNumber }}</td>
+                            <td>{{ reservation.createdAt ? reservation.createdAt|date('d/m/Y') : '' }}</td>
+                            <td>{{ reservation.paymentMethod }}</td>
+                            <td>{{ reservation.paid ? 'Oui' : 'Non' }}</td>
+                            <td>
+                                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}" class="
+                                                   btn btn-primary btn-sm" role="button">DÉTAILS</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}"
+                                       class="btn btn-warning btn-sm"
+                                       role="button">MODIFIER</a>
+                                    {% if not reservation.paid %}
+                                        <hr class="vertical-hr">
+                                        <a href="{{ path('validate_reservation', {'token': reservation.validationToken}) }}"
+                                           class="btn btn-success btn-sm"
+                                           role="button">VALIDER</a>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9">Aucune reservation</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>NOM PRÉNOM</th>
+                        <th>TABLE</th>
+                        <th>NB MENUS</th>
+                        <th>DATE</th>
+                        <th>MODE DE PAIEMENT</th>
+                        <th>PAYÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-start dataTables_paginate paging_simple_numbers">
+                        {{ knp_pagination_render(reservation_pagination) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow">
+        <div class="card-header py-3 align-middle">
+            <p class="text-primary m-0 fw-bold">TABLES</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                 aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>NOM</th>
+                        <th>CAPACITÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for table in table_pagination %}
+                        <tr>
+                            <td>{{ table.name }}</td>
+                            <td>{{ table.capacity }}</td>
+                            <td>
+                                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('table_show', {'id': table.id}) }}" class="
+                                                   btn btn-primary btn-sm" role="button">DÉTAILS</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('table_edit', {'id': table.id}) }}"
+                                       class="btn btn-warning btn-sm"
+                                       role="button">MODIFIER</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune table</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>NOM</th>
+                        <th>CAPACITÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-start dataTables_paginate paging_simple_numbers">
+                        {{ knp_pagination_render(table_pagination) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">MENUS</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                 aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>NOM</th>
+                        <th>PRIX</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for menu in menu_pagination %}
+                        <tr>
+                            <td>{{ menu.name }}</td>
+                            <td>{{ menu.price }}</td>
+                            <td>
+                                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('menu_show', {'id': menu.id}) }}" class="
+                                                   btn btn-primary btn-sm" role="button">DÉTAILS</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('menu_edit', {'id': menu.id}) }}"
+                                       class="btn btn-warning btn-sm"
+                                       role="button">MODIFIER</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune reservation</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>NOM</th>
+                        <th>PRIX</th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-start dataTables_paginate paging_simple_numbers">
+                        {{ knp_pagination_render(menu_pagination) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

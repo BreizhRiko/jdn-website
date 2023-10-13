@@ -1,0 +1,61 @@
+{{ form_start(form) }}
+{{ form_start(form) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
+{% if not isPaid %}
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.phoneNumber) }}
+        </div>
+    </div>
+{% endif %}
+<div class="row">
+    <div class="col">
+        {{ form_row(form.email) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        {% if not isPaid %}
+            {{ form_row(form.paymentMethod) }}
+        {% else %}
+            {{ form_row(form.phoneNumber) }}
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.firstName) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form_row(form.lastName) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {% if not isPaid %}
+            {% for mr in form.menuReservations %}
+                <div class="row">
+                    <div class="col">
+                        {{ form_row(mr, {'label': 'Nombre de menus "%s" (%0.1f€)'|format(mr.vars.data.menu.name, mr.vars.data.menu.price)}) }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<input id="token" type="hidden" name="token" value="{{ csrf_token('add-item') }}"/>
+<div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+    <button class="btn btn-sm btn-{{ button_label == 'Ajouter' ? 'primary' : 'warning' }}">{{ button_label|default('Ajouter') }}</button>
+    <hr class="vertical-hr action_button">
+    <a href="{{ path('reservation_index') }}" class="btn btn-sm btn-primary action_button">Précédent</a>
+</div>
+{{ form_end(form) }}

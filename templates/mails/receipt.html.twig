@@ -1,0 +1,21 @@
+{% apply inline_css(source('bootstrap_5_layout.html.twig')) %}
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+    <div class="container" style="margin-top: 50px">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Merci {{ reservation.firstName }} !</p>
+                <p class="card-text">Nous sommes heureux de vous compter parmi nous le 19 novembre !</p>
+                <p class="card-text">Récapitulatif de la commande : {{ successURL }}</p>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endapply %}

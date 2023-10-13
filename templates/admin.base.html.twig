@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo_jdn.png') }}"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/sidenav.css') }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/fontawesome5-overrides.min.css') }}">
+    {% block stylesheets %}
+        {# {{ encore_entry_link_tags('app') }} #}
+    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/admin/js/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bs-init.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/theme.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/sidenav.js') }}"></script>
+    {% block javascripts %}
+        {# {{ encore_entry_script_tags('app') }} #}
+    {% endblock %}
+</head>
+
+<body>
+<div id="body-wrapper">
+    <header class="header" id="header">
+        <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
+        <div>
+            <form method="get" action="{{ path('search') }}">
+                <div class="input-group">
+                    <input class="bg-light form-control border-0 small" type="text" name="slug"
+                           placeholder="Rechercher ...">
+                    <button class="btn btn-primary py-0" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="{{ path('admin') }}" class="nav_logo">
+                    <i class='bx bxs-dashboard nav_logo-icon'></i>
+                    <span class="nav_logo-name">DASHBOARD</span>
+                </a>
+                <div class="nav_list">
+                    <a href="{{ path('table_index') }}"
+                       class="nav_link {{ app.request.pathinfo == '/admin/table/' ? 'active' : '' }}">
+                        <i class='bx bx-table nav_icon'></i>
+                        <span class="nav_name">Tables</span>
+                    </a>
+                    <a href="{{ path('reservation_index') }}"
+                       class="nav_link {{ app.request.pathinfo == '/admin/reservation/' ? 'active' : '' }}">
+                        <i class='bx bx-pencil nav_icon'></i> <span
+                                class="nav_name">Réservations</span>
+                    </a>
+                    <a href="{{ path('menu_index') }}"
+                       class="nav_link {{ app.request.pathinfo == '/admin/menu/' ? 'active' : '' }}"> <i
+                                class='bx bx-food-menu nav_icon'></i> <span
+                                class="nav_name">Menus</span></a>
+                    <a href="{{ path('home') }}" class="nav_link"> <i class='bx bx-home nav_icon'></i> <span
+                                class="nav_name">Revenir au site</span></a>
+                </div>
+                <a href="{{ path('app_logout') }}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                            class="nav_name">Déconnexion</span>
+                </a>
+        </nav>
+    </div>
+
+    <div class="content-admin">
+        <div class="">
+            {% for message in app.flashes('danger') %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

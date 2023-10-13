@@ -1,0 +1,35 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Edit Menu{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-primary m-0 fw-bold">TABLE N° {{ table.id }}</p>
+                            </div>
+                            <div class="col ">
+
+                                <div class="d-inline-flex float-end flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('table_toggle_lock', {'id': table.id}) }}" class="btn btn-sm btn-{{ table.available ? 'warning' : 'success' }}">
+                                        {{ table.available ? 'Bloquer' : 'Débloquer' }}</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('table_index') }}" class="btn btn-sm btn-primary">Précédent</a>
+                                    <hr class="vertical-hr">
+                                    {{ include('table/_delete_form.html.twig') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ include('table/_form.html.twig', {button_label: 'Mettre à jour', canDelete: true}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

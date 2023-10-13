@@ -1,0 +1,67 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">RÉSERVATION N° {{ reservation.id }}</p>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th colspan="2">DÉTAILS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-lg-start">Réservation au nom de</td>
+                                <td class="text-lg-end">{{ reservation.firstName }} {{ reservation.lastName }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Numéro de téléphone</td>
+                                <td class="text-lg-end">{{ reservation.phoneNumber }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Paiement effectué</td>
+                                <td class="text-lg-end">{{ reservation.paid ? 'OUI' : 'NON' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Date de réservation</td>
+                                <td class="text-lg-end">{{ reservation.createdAt | date("d/m/Y") }}</td>
+                            </tr>
+                            {% set amount = 0 %}
+                            {% for mr in reservation.menuReservations %}
+                                <tr>
+                                    <td class="text-lg-start">Nombre de menus "{{ mr.menu.name }}"</td>
+                                    <td class="text-lg-end">{{ mr.quantity }}
+                                        ({{ '%0.1f'|format(mr.menu.price * mr.quantity) }}€)
+                                    </td>
+                                </tr>
+                                {% set amount = amount + (mr.menu.price * mr.quantity) %}
+                            {% endfor %}
+                            <tr>
+                                {% if reservation.paid %}
+                                    <td class="text-lg-start">Versement effectué</td>
+                                {% else %}
+                                    <td class="text-lg-start">Versement à réaliser sur place</td>
+                                {% endif %}
+                                <td class="text-lg-end">{{ '%0.1f'|format(reservation.price) }}€</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="{{ path('reservation_index') }}"
+                           class="btn btn-sm btn-primary action_button">Précédent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+
+{% endblock %}

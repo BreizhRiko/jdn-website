@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo_jdn.png') }}" />
+    <title>{% block title %}Just Diplomed Night 2022 - IG2I Centrale Lille{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/timeline.css') }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic">
+    {% block stylesheets %}
+        {# {{ encore_entry_link_tags('app') }} #}
+    {% endblock %}
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/stylish-portfolio.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/main.js') }}" defer></script>
+    {% block javascripts %}
+        {# {{ encore_entry_script_tags('app') }} #}
+    {% endblock %}
+</head>
+<body id="page-top"><a class="menu-toggle rounded" href="#"><i class="fa fa-bars"></i></a>
+<nav class="navbar navbar-light navbar-expand" id="sidebar-wrapper">
+    <div class="container">
+        <button data-bs-toggle="collapse" class="navbar-toggler d-none" data-bs-target="#"></button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav sidebar-nav" id="sidebar-nav">
+                <li class="nav-item sidebar-brand"><a class="nav-link active js-scroll-trigger" href="#page-top">Just
+                        Diplomed Night</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#page-top">Accueil</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#planning">Planning</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#plan_salle">Plan de la salle</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#menus">Menus</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#reservations">Réservations</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#tables">Tables</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="#thanks">Remerciements</a></li>
+                <li class="nav-item sidebar-nav-item"><a class="nav-link js-scroll-trigger" href="{{ path('admin') }}">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block body %}{% endblock %}
+<footer class="footer text-center">
+    <div class="container">
+        <p class="text-muted mb-0 small">Copyright &nbsp;© Just Diplomed Night 2022</p>
+    </div><a class="js-scroll-trigger scroll-to-top rounded" href="#page-top"><i class="fa fa-angle-up"></i></a>
+</footer>
+</body>
+</html>

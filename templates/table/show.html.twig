@@ -1,0 +1,40 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">MENU N° {{ table.id }}</p>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th colspan="2">DÉTAILS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-lg-start">Nom</td>
+                                <td class="text-lg-end">{{ table.name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Capacité</td>
+                                <td class="text-lg-end">{{ '%d'|format(table.capacity) }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="{{ path('table_index') }}" class="btn btn-sm btn-primary action_button">Précédent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+
+{% endblock %}

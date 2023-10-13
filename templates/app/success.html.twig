@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title %}Just Diplomed Night 2022 - IG2I Centrale Lille{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('assets/js/html2canvas.js') }}" defer></script>
+    <script src="{{ asset('assets/js/download_receipt.js') }}" defer></script>
+{% endblock %}
+{% block body %}
+    <div id="receipt" class="container" style="margin-top: 50px">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Merci {{ reservation.firstName }} !</p>
+                <p class="card-text">Nous sommes heureux de vous compter parmi nous le 19 novembre !</p>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="2">RÉCAPITULATIF DE LA COMMANDE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-lg-start">Réservation au nom de</td>
+                        <td class="text-lg-end">{{ reservation.firstName }} {{ reservation.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-start">Table</td>
+                        <td class="text-lg-end">{{ reservation.hostTable.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-lg-start">Date de réservation</td>
+                        <td class="text-lg-end">{{ reservation.createdAt | date("d/m/Y") }}</td>
+                    </tr>
+                    {% set amount = 0 %}
+                    {% for mr in reservation.menuReservations %}
+                        <tr>
+                            <td class="text-lg-start">Nombre de menus "{{ mr.menu.name }}"</td>
+                            <td class="text-lg-end">{{ mr.quantity }}
+                                ({{ '%0.1f'|format(mr.menu.price * mr.quantity) }}€)
+                            </td>
+                        </tr>
+                        {% set amount = amount + (mr.menu.price * mr.quantity) %}
+                    {% endfor %}
+                    <tr>
+                        {% if reservation.paid %}
+                            <td class="text-lg-start">Versement effectué</td>
+                        {% else %}
+                            <td class="text-lg-start">Versement à réaliser sur place</td>
+                        {% endif %}
+                        <td class="text-lg-end">{{ '%0.1f'|format(amount) }}€</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                    <a href="{{ path('home') }}" class="btn btn-sm btn-primary">Retour au site</a>
+                     <button id="download_receipt" style="margin-left: 10px" class="btn btn-sm btn-primary">Télécharger le reçu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

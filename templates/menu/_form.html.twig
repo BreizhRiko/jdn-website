@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+    <button class="btn btn-sm btn-{{ button_label == 'Ajouter' ? 'primary' : 'warning' }}">{{ button_label|default('Ajouter') }}</button>
+    <hr class="vertical-hr">
+    <a href="{{ path('menu_index') }}" class="btn btn-sm btn-primary">Précédent</a>
+</div>
+{{ form_end(form) }}

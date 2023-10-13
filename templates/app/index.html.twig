@@ -1,0 +1,342 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Just Diplomed Night 2022 - IG2I Centrale Lille{% endblock %}
+
+{% block body %}
+    <header class="d-flex masthead"
+            style="background: url('{{ asset('assets/img/accueil.png') }}') center / cover no-repeat;">
+        <div class="container my-auto text-center">
+            <a href="https://www.facebook.com/justdiplomednight" target="_blank" rel="noopener noreferrer">
+                <h1 class="mb-1" style="color: rgb(255,255,255);">
+                    <img src="{{ asset('assets/img/logo_jdn.png') }}" style="width: 40%;" class="logo" alt="LOGO JDN">
+                </h1>
+            </a>
+            <h3 class="mb-5"><em style="color: #FFF">LE SAMEDI 19 NOVEMBRE.<br><a
+                            href="https://www.google.com/maps/place/H%C3%B4tel+Mercure+Lille+A%C3%A9roport/@50.5838528,3.0929738,15z/data=!4m2!3m1!1s0x0:0x16cb4a904f640e96?sa=X&ved=2ahUKEwjw2Nbyzr_6AhUC0xoKHbSuBAEQ_BJ6BAhzEAU"
+                            target="_blank" style="color: #FFC107;"><strong>HÔTEL MERCURE DE LESQUIN.</strong></a></em></h3><a
+                    class="btn btn-warning btn-xl js-scroll-trigger" role="button" href="#reservations">RÉSERVER</a>
+            <div class="overlay"></div>
+        </div>
+    </header>
+    <section id="about" class="content-section bg-light">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2><strong>LA JDN QU’EST CE QUE C’EST ?</strong></h2>
+                    <p class="lead mb-5"><span>La « Just Diplomed Night » est la soirée de gala de l’IG2I. Durant celle-ci, la promotion 2022 assistera à sa remise des diplômes.</span>
+                    </p>
+                    <p class="lead mb-5"><span>Ensuite, réunis autour d’un repas d’exception, les diplômés, leur famille, les étudiants ainsi que le personnel de l’école se rassemblent pour partager un moment clôturant ces 5 années (et plus si affinité !).</span>
+                    </p>
+                    <p class="lead mb-5"><span>La soirée sera aussi marquée par le traditionnel film de la JDN, cette année sur le thème de Fort Boyard.</span>
+                    </p>
+                    <p class="lead mb-5"><span>Toutes ces années ont été marquées par de nombreux souvenirs auxquels viendra s’ajouter celui de cette soirée qui s’annonce mémorable !</span>
+                    </p>
+                    <div style="" class="video-responsive">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FhrPA15t-Ds" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="planning" class="text-center content-section" id="planning">
+        <div class="content-section-heading text-center">
+            <h2 class="mb-5">PLANNING DE LA SOIRÉE</h2>
+        </div>
+        <div class="container">
+            <div class="timeline">
+                <div class="timeline-wrapper timeline-wrapper-warning">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">16H15</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Accueil des diplômés 2022 et leur famille</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">17H</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Début de la remise des diplômes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-wrapper timeline-wrapper-success">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">18H30</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Cocktail</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-wrapper timeline-inverted timeline-wrapper-info">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">20H00</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Dîner de gala</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-wrapper timeline-wrapper-primary">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">23H50</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Soirée dansante</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-wrapper timeline-inverted timeline-wrapper-info">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h6 class="timeline-title">02H00</h6>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Fin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="plan_salle" class="callout"
+             style="background: url('{{ asset('assets/img/plan_blur.png') }}') center / cover no-repeat;">
+        <div class="container my-auto text-center">
+            <h1 class="mb-1" style="color: rgb(255,255,255);">
+                <img src="{{ asset('assets/img/plan.png') }}" style="width: 100%;" class="plan" alt="PLAN JDN">
+            </h1>
+        </div>
+        <br/><br/>
+    </section>
+    <section id="menus" class="content-section">
+        <div class="container">
+            <div class="content-section-heading text-center">
+                <h2 class="mb-5">{{ menus | length > 1 ? 'MENUS' : 'MENU' }}</h2>
+            </div>
+            <div class="row g-0 d-flex justify-content-around flex-wrap">
+                {% for menu in menus %}
+                    <div class="col-lg-6"><a class="portfolio-item">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <h1>{{ menu.name }} : {{ menu.price }}€</h1>
+                                    <p class="mb-0">
+                                        {% if menu.starter %}
+                                            <strong>Entrée</strong> :&nbsp; {{ menu.starter }}<br>
+                                        {% endif %}
+                                        <strong>Plat</strong> :&nbsp; {{ menu.dish }}<br>
+                                        {% if menu.dessert %}
+                                        <strong>Dessert</strong> :&nbsp; {{ menu.dessert }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if menu.image %}
+                                <img class="img-fluid test-img" src="{{ asset("assets/img/uploads/#{menu.image}") }}">
+                            {% else %}
+                                <img class="img-fluid test-img" src="{{ asset('assets/img/uploads/default.jpg') }}">
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="reservations" class="text-center content-section">
+        <div class="content-section-heading text-center">
+            <h2 class="mb-5">RÉSERVATIONS</h2>
+        </div>
+        <div class="container">
+                {% if reservation_enabled %}
+                    {{ form_start(form) }}
+                    <div class="my-custom-class-for-errors">
+                        {{ form_errors(form) }}
+                        {% for message in app.flashes('danger') %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_row(form.phoneNumber) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(form.email) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(form.firstName) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(form.lastName) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(form.paymentMethod) }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_row(form.hostTable) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            {% for mr in form.menuReservations %}
+                                <div class="row">
+                                    <div class="col">
+                                        {{ form_row(mr, {'label': 'Nombre de menus "%s" (%0.1f€)'|format(mr.vars.data.menu.name, mr.vars.data.menu.price)}) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button id="inscription" class="btn btn-warning btn-xl" type="submit">INSCRIPTION</button>
+                        </div>
+                    </div>
+                    <input id="token" type="hidden" name="token" value="{{ csrf_token('add-item') }}"/>
+                    {{ form_end(form) }}
+                {% else %}
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <p class="lead mb-5"><span>Les réservations sont désormais clôturées.</span>
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+        </div>
+    </section>
+    <section id="tables" class="text-center content-section">
+        <div class="content-section-heading text-center">
+            <h2 class="mb-5">TABLES</h2>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3">
+                {% for table in tables %}
+                    {% if table.available %}
+                        <div class="col">
+                            <div class="table-responsive font-monospace text-uppercase text-center">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ table.name }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% set count = 0 %}
+                                    {% for reservation in table.reservations %}
+                                        {% for mr in reservation.menuReservations %}
+                                            {% for i in 1..mr.quantity %}
+                                                <tr>
+                                                    <td>{{ reservation.firstName }} {{ reservation.lastName }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            {% set count = count + mr.quantity %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% if table.capacity - count > 0 %}
+                                        {% for i in 1..(table.capacity - count) %}
+                                            <tr>
+                                                <td style="background-color:#caeabd">Emplacement libre</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1289.2983604084484!2d3.094042540996135!3d50.583512394502165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d4275c36c0b1%3A0x16cb4a904f640e96!2sH%C3%B4tel%20Mercure%20Lille%20A%C3%A9roport!5e1!3m2!1sfr!2sfr!4v1664740520325!5m2!1sfr!2sfr" width="100%" height="400"></iframe>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Informations pratiques</h4>
+                            <div class="row d-flex d-lg-flex flex-row align-middle">
+                                <div class="col-2"><i class="fa fa-location-arrow d-lg-flex"
+                                                      style="font-size: 30px;"></i></div>
+                                <div class="col">
+                                    <p class="text-uppercase" style="text-align: left;">110 Rue Jean Jaurès, 59810 Lesquin<br><br></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><i class="fa fa-road" style="font-size: 30px;"></i></div>
+                                <div class="col">
+                                    <p>Parking gratuit sur place jusqu’à 300 voitures<br></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><i class="fa fa-hotel" style="font-size: 30px;"></i></div>
+                                <div class="col">
+                                    <p>Tarif préférentiel pour chambre de 2 ou 4 au Mercure disponible en réservant au 03 20 87 46 46 ou à h1098@accor.com en précisant JDN<br></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><i class="fa fa-at" style="font-size: 30px;"></i></div>
+                                <div class="col">
+                                    <p>ri.jdn.ig2i@gmail.com<br></p>
+                                </div>
+                            </div>
+                            <p><br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="thanks" class="content-section bg-light">
+        <div class="content-section-heading text-center">
+            <h2 class="mb-5">REMERCIEMENTS</h2>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <p class="lead mb-5"><span>Parrain de l'édition 2022 :<br></span>
+                    </p>
+                    <div class="row g-0 d-flex justify-content-around flex-wrap">
+                        <div class="col-lg-5">
+                            <a href="https://atos.net/fr/" target="_blank" rel="noopener noreferrer">
+                                <img class="img-fluid" src="{{ asset('assets/img/atos-logo.png') }}" width="200px">
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

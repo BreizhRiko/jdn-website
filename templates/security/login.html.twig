@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css') }}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/fonts/fontawesome5-overrides.min.css') }}">
+    <script src="{{ asset('assets/admin/js/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/bs-init.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/theme.js') }}"></script>
+</head>
+<body class="bg-gradient-primary" style="background: var(--bs-blue);">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-12 col-xl-10">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-flex">
+                            <div class="flex-grow-1 bg-login-image"
+                                 style="background-image: url({{ asset('assets/admin/img/dogs/image3.jpeg') }});"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h4 class="text-dark mb-4">JDN ADMIN</h4>
+                                </div>
+                                <form method="post" class="user">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                        <div class="mb-3">
+                                            Vous êtes connectés sous le pseudo : {{ app.user.email }}, <a
+                                                    href="{{ path('app_logout') }}">Logout</a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user" type="email"
+                                               id="exampleInputEmail" value="{{ last_username }}"
+                                               aria-describedby="emailHelp"
+                                               placeholder="Enter Email Address..." name="email" autocomplete="email"
+                                               required autofocus></div>
+
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user" type="password"
+                                               id="exampleInputPassword" placeholder="Password"
+                                               name="password" autocomplete="current-password" required>
+                                    </div>
+
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+                                    <button class="btn btn-primary d-block btn-user w-100" type="submit"
+                                            style="background: var(--bs-blue);">Login
+                                    </button>
+                                    <hr>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

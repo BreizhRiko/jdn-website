@@ -1,0 +1,26 @@
+name: Mettre en ligne le site JDN ⚙
+on: push
+jobs:
+  web-deploy:
+    name: Déployer 🎉
+    runs-on: ubuntu-latest
+    steps:
+    - name: Récupérer le code 🚚
+      uses: actions/checkout@v2
+      
+    - name: Lister et retirer les fichiers inutiles 🔍
+      run: |
+        ls -la 
+        rm README.md
+        rm -rf .git
+        rm -rf .github
+        ls -la
+        
+    - name: Uploader les fichiers par FTP 📂
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: 'vps-227832bb.vps.ovh.net'
+        username: 'ftp-user'
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        server-dir: '/www/just-diplomed-night.fr/'

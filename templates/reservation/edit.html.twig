@@ -1,0 +1,31 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-primary m-0 fw-bold">RÉSERVATION N° {{ reservation.id }}</p>
+                            </div>
+                            <div class="col ">
+                                <p class="text-primary m-0 fw-bold">
+                                    {{ include('reservation/_delete_form.html.twig') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ include('reservation/_form.html.twig', {button_label: 'Mettre à jour', canDelete: true}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+{% endblock %}

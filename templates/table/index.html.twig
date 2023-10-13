@@ -1,0 +1,73 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <div class="card shadow">
+        <div class="card-header py-3 align-middle">
+            <p class="text-primary m-0 fw-bold">TABLES</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="d-inline-flex float-start flex-row justify-content-xxl-start align-items-xxl-center">
+                    <a href="{{ path('table_new') }}" class="btn btn-sm btn-primary">Créer</a>
+                </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                 aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>NOM</th>
+                        <th>DISPONIBILITÉ</th>
+                        <th>CAPACITÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for table in paginator %}
+                        <tr>
+                            <td>{{ table.name }}</td>
+                            <td>{{ table.available ? 'Disponible' : 'Bloquée' }}</td>
+                            <td>{{ table.capacity }}</td>
+                            <td>
+                                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('table_show', {'id': table.id}) }}" class="
+                                                   btn btn-primary btn-sm" role="button">DÉTAILS</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('table_edit', {'id': table.id}) }}"
+                                       class="btn btn-warning btn-sm"
+                                       role="button">MODIFIER</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune table</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>NOM</th>
+                        <th>DISPONIBILITÉ</th>
+                        <th>CAPACITÉ</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-start dataTables_paginate paging_simple_numbers">
+                        {{ knp_pagination_render(paginator) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

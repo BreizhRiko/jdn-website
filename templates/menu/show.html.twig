@@ -1,0 +1,63 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Menu{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">MENU N° {{ menu.id }}</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-0 d-flex justify-content-around flex-wrap">
+                            <div class="col-6">
+                                {% if menu.image %}
+                                    <img class="img-fluid test-img"
+                                         src="{{ asset('assets/img/uploads/default.jpg') }}">
+                                {% else %}
+                                    <img class="img-fluid test-img"
+                                         src="{{ asset('assets/img/uploads/default.jpg') }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th colspan="2">DÉTAILS</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-lg-start">Nom</td>
+                                <td class="text-lg-end">{{ menu.name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Prix</td>
+                                <td class="text-lg-end">{{ '%0.1f'|format(menu.price) }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Entrée</td>
+                                <td class="text-lg-end">{{ menu.starter != null ? menu.starter : 'Aucun' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Plat</td>
+                                <td class="text-lg-end">{{ menu.dish != null ? menu.dish : 'Aucun' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-lg-start">Dessert</td>
+                                <td class="text-lg-end">{{ menu.dessert != null ? menu.dessert : 'Aucun' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="{{ path('menu_index') }}" class="btn btn-sm btn-primary action_button">Précédent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+
+{% endblock %}

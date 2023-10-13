@@ -1,0 +1,87 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <div class="card shadow">
+        <div class="card-header py-3 align-middle">
+            <p class="text-primary m-0 fw-bold">MENUS</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="d-inline-flex float-start flex-row justify-content-xxl-start align-items-xxl-center">
+                    <a href="{{ path('menu_new') }}" class="btn btn-sm btn-primary">Créer</a>
+                </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                 aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>NOM</th>
+                        <th>PRIX</th>
+                        <th>ENTRÉE</th>
+                        <th>PLAT</th>
+                        <th>DESSERT</th>
+                        <th>IMAGE</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for menu in paginator %}
+                        <tr>
+                            <td>{{ menu.name }}</td>
+                            <td>{{ menu.price }}</td>
+                            <td>{{ menu.starter != null ? menu.starter : 'Aucun' }}</td>
+                            <td>{{ menu.dish != null ? menu.dish : 'Aucun' }}</td>
+                            <td>{{ menu.dessert != null ? menu.dessert : 'Aucun' }}</td>
+                            <td>
+                                {% if menu.image %}
+                                    <img src="{{ asset("assets/img/uploads/#{menu.image}") }}" width="50px" alt="">
+                                {% else %}
+                                    <img src="{{ asset('assets/img/uploads/default.jpg') }}" width="50px" alt="">
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="d-inline-flex float-start flex-row justify-content-start align-items-center">
+                                    <a href="{{ path('menu_show', {'id': menu.id}) }}" class="
+                                                   btn btn-warning btn-sm" role="button">DÉTAILS</a>
+                                    <hr class="vertical-hr">
+                                    <a href="{{ path('menu_edit', {'id': menu.id}) }}"
+                                       class="btn btn-warning btn-sm"
+                                       role="button">MODIFIER</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucune reservation</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>NOM</th>
+                        <th>PRIX</th>
+                        <th>ENTRÉE</th>
+                        <th>PLAT</th>
+                        <th>DESSERT</th>
+                        <th>IMAGE</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-start dataTables_paginate paging_simple_numbers">
+                        {{ knp_pagination_render(paginator) }}
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
